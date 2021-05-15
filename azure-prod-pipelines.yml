@@ -13,10 +13,10 @@ steps:
 - task: oc-setup@2
   inputs:
     openshiftService: 'pytest-dev-sa'
-    version: '4.3'
+    version: '4.7'
 - script: |
     oc status
-    oc tag pytest-dev/pytest-calculator:latest pytest-prod/pytest-calculator:live
-    oc project pytest-prod
+    oc tag stefan-bergstein-dev/pytest-calculator:latest stefan-bergstein-stage/pytest-calculator:live
+    oc project stefan-bergstein-stage
     oc rollout latest dc/pytest-calculator
     oc rollout status dc/pytest-calculator
